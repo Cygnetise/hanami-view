@@ -1,6 +1,6 @@
 require 'set'
 require 'pathname'
-require 'hanami/utils/class_attribute'
+require 'hanami/cyg_utils/class_attribute'
 require 'hanami/view/version'
 require 'hanami/view/configuration'
 require 'hanami/view/inheritable'
@@ -19,7 +19,7 @@ module Hanami
   #
   # @since 0.1.0
   module View
-    include Utils::ClassAttribute
+    include CygUtils::ClassAttribute
     # Framework configuration
     #
     # @since 0.2.0
@@ -247,7 +247,7 @@ module Hanami
         extend Rendering
         extend Escape
 
-        include Utils::ClassAttribute
+        include CygUtils::ClassAttribute
         class_attribute :configuration
 
         self.configuration = conf.duplicate

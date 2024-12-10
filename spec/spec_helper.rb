@@ -23,7 +23,7 @@ Hanami::View.class_eval do
   extend Unloadable
 end
 
-Hanami::Utils::LoadPaths.class_eval do
+Hanami::CygUtils::LoadPaths.class_eval do
   def include?(object)
     @paths.include?(object)
   end

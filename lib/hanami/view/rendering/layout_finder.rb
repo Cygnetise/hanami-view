@@ -1,5 +1,5 @@
-require 'hanami/utils/string'
-require 'hanami/utils/class'
+require 'hanami/cyg_utils/string'
+require 'hanami/cyg_utils/class'
 require 'hanami/view/rendering/null_layout'
 
 module Hanami
@@ -65,8 +65,8 @@ module Hanami
           case layout
           when Symbol, String
             # TODO Move this low level logic into a Hanami::Utils solution
-            class_name = "#{ Utils::String.classify(layout) }#{ SUFFIX }"
-            namespace  = Utils::Class.load!(namespace)
+            class_name = "#{ CygUtils::String.classify(layout) }#{ SUFFIX }"
+            namespace  = CygUtils::Class.load!(namespace)
             namespace.const_get(class_name)
           when Class
             layout

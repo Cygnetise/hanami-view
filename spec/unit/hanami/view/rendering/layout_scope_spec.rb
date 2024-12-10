@@ -86,8 +86,8 @@ RSpec.describe Hanami::View::Rendering::LayoutScope do
       expect(@scope.is_a?(BasicObject)).to be(true)
     end
 
-    it 'returns true if checked against Hanami::Utils::BasicObject' do
-      expect(@scope.is_a?(Hanami::Utils::BasicObject)).to be(true)
+    it 'returns true if checked against Hanami::CygUtils::BasicObject' do
+      expect(@scope.is_a?(Hanami::CygUtils::BasicObject)).to be(true)
     end
 
     it "returns true if checked against #{described_class}" do

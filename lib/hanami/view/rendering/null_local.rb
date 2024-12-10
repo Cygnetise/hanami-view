@@ -1,4 +1,4 @@
-require 'hanami/utils/basic_object'
+require 'hanami/cyg_utils/basic_object'
 
 module Hanami
   module View
@@ -8,7 +8,7 @@ module Hanami
       # @since 0.7.0
       #
       # @see Hanami::View::Rendering#local
-      class NullLocal < Utils::BasicObject
+      class NullLocal < CygUtils::BasicObject
         # @since 0.7.0
         # @api private
         TO_STR = "".freeze

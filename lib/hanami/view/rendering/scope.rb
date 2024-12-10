@@ -1,4 +1,4 @@
-require 'hanami/utils/escape'
+require 'hanami/cyg_utils/escape'
 require 'hanami/view/rendering/layout_scope'
 require 'hanami/view/rendering/template'
 require 'hanami/view/rendering/partial'

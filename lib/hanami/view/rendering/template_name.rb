@@ -1,4 +1,4 @@
-require 'hanami/utils/string'
+require 'hanami/cyg_utils/string'
 
 module Hanami
   module View
@@ -28,7 +28,7 @@ module Hanami
         # @api private
         def compile!(namespace)
           tokens(namespace) {|token| replace!(token) }
-          @name = Utils::String.underscore(@name)
+          @name = CygUtils::String.underscore(@name)
         end
 
         # @since 0.2.0
