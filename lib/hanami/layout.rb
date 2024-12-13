@@ -1,4 +1,4 @@
-require 'hanami/utils/class_attribute'
+require 'hanami/cyg_utils/class_attribute'
 require 'hanami/view/rendering/layout_registry'
 require 'hanami/view/rendering/layout_scope'
 require 'hanami/view/rendering/null_layout'
@@ -30,7 +30,7 @@ module Hanami
         extend Hanami::View::Dsl.dup
         extend ClassMethods
 
-        include Utils::ClassAttribute
+        include CygUtils::ClassAttribute
         class_attribute :configuration
 
         self.configuration = conf.duplicate

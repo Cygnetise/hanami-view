@@ -1,8 +1,8 @@
 require 'set'
-require 'hanami/utils/class'
-require 'hanami/utils/kernel'
-require 'hanami/utils/string'
-require 'hanami/utils/load_paths'
+require 'hanami/cyg_utils/class'
+require 'hanami/cyg_utils/kernel'
+require 'hanami/cyg_utils/string'
+require 'hanami/cyg_utils/load_paths'
 require 'hanami/view/rendering/layout_finder'
 require 'hanami/view/rendering/partial_templates_finder'
 
@@ -91,8 +91,8 @@ module Hanami
       #     # => will return from MyApp::View
       def self.for(base)
         # TODO this implementation is similar to Hanami::Controller::Configuration consider to extract it into Hanami::Utils
-        namespace = Utils::String.namespace(base)
-        framework = Utils::Class.load("#{namespace}::View") || Utils::Class.load!('Hanami::View')
+        namespace = CygUtils::String.namespace(base)
+        framework = CygUtils::Class.load("#{namespace}::View") || CygUtils::Class.load!('Hanami::View')
         framework.configuration
       end
 
@@ -186,7 +186,7 @@ module Hanami
       #   Hanami::View.configuration.root # => #<Pathname:/path/to/templates>
       def root(value = nil)
         if value
-          @root = Utils::Kernel.Pathname(value).realpath
+          @root = CygUtils::Kernel.Pathname(value).realpath
         else
           @root
         end
@@ -464,7 +464,7 @@ module Hanami
         @partials   = Hash.new { |h, k| h[k] = Hash.new }
         @views      = Set.new
         @layouts    = Set.new
-        @load_paths = Utils::LoadPaths.new(root)
+        @load_paths = CygUtils::LoadPaths.new(root)
         @layout     = nil
         @modules    = []
       end

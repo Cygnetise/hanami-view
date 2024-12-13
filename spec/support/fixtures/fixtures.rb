@@ -435,7 +435,7 @@ module Store
       include Store::Helpers::AssetTagHelpers
 
       def head
-        Hanami::Utils::Escape::SafeString.new %(<meta name="hanamirb-version" content="0.3.1">)
+        Hanami::CygUtils::Escape::SafeString.new %(<meta name="hanamirb-version" content="0.3.1">)
       end
 
       def user_name

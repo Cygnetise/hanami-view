@@ -1,4 +1,4 @@
-require 'hanami/utils/escape'
+require 'hanami/cyg_utils/escape'
 
 module Hanami
   module View
@@ -15,7 +15,7 @@ module Hanami
         #
         # @param string [String] the input string
         #
-        # @return [Hanami::Utils::Escape::SafeString] the string marked as safe
+        # @return [Hanami::CygUtils::Escape::SafeString] the string marked as safe
         #
         # @since 0.4.0
         #
@@ -60,7 +60,7 @@ module Hanami
         #
         #   presenter.name # => "<script>alert('xss')</script>"
         def _raw(string)
-          ::Hanami::Utils::Escape::SafeString.new(string)
+          ::Hanami::CygUtils::Escape::SafeString.new(string)
         end
 
         # Force the output escape for the given object
@@ -181,7 +181,7 @@ module Hanami
       def self.html(input)
         case input
         when String
-          Utils::Escape.html(input)
+          CygUtils::Escape.html(input)
         else
           input
         end
@@ -193,7 +193,7 @@ module Hanami
       # @api private
       def self.extended(base)
         base.class_eval do
-          include ::Hanami::Utils::ClassAttribute
+          include ::Hanami::CygUtils::ClassAttribute
           include ::Hanami::View::Escape::InstanceMethods
 
           class_attribute :autoescape_methods
