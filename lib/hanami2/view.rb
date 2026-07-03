@@ -27,7 +27,7 @@ module Hanami2
       @gem_loader ||= Zeitwerk::Loader.new.tap do |loader|
         root = File.expand_path("..", __dir__)
         loader.tag = "hanami2-view"
-        loader.push_dir("#{root}/hanami", namespace: Hanami2)
+        loader.push_dir("#{root}/hanami2", namespace: Hanami2)
         loader.ignore(
           "#{root}/hanami2/view/version.rb",
           "#{root}/hanami2/view/errors.rb",
