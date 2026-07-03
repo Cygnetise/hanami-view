@@ -10,12 +10,12 @@ module Hanami2
       # @api private
       # @since 2.1.0
       Mapping = ::Tilt.default_mapping.dup.tap { |mapping|
-        # If "slim" has been required before "hanami/view", unregister Slim's non-lazy registered
+        # If "slim" has been required before "hanami2/view", unregister Slim's non-lazy registered
         # template, so our own template adapter (using register_lazy below) can take precedence.
         mapping.unregister "slim"
 
         # Register our own ERB template.
-        mapping.register_lazy "Hanami2::View::ERB::Template", "hanami/view/erb/template", "erb", "rhtml"
+        mapping.register_lazy "Hanami2::View::ERB::Template", "hanami2/view/erb/template", "erb", "rhtml"
 
         # Register ERB templates for Haml and Slim that set the `use_html_safe: true` option.
         #
@@ -23,8 +23,8 @@ module Hanami2
         # `Mapping#const_defined?`, which (if slim was already required) would receive
         # "Hanami2::View::Slim::Template" and return `Slim::Template`, which is the opposite of what
         # we want.
-        mapping.register_lazy "Hanami2::View::Tilt::HamlAdapter::Template", "hanami/view/tilt/haml_adapter", "haml"
-        mapping.register_lazy "Hanami2::View::Tilt::SlimAdapter::Template", "hanami/view/tilt/slim_adapter", "slim"
+        mapping.register_lazy "Hanami2::View::Tilt::HamlAdapter::Template", "hanami2/view/tilt/haml_adapter", "haml"
+        mapping.register_lazy "Hanami2::View::Tilt::SlimAdapter::Template", "hanami2/view/tilt/slim_adapter", "slim"
       }
 
       class << self

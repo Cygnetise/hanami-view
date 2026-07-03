@@ -29,8 +29,8 @@ module Hanami2
         loader.tag = "hanami2-view"
         loader.push_dir("#{root}/hanami", namespace: Hanami2)
         loader.ignore(
-          "#{root}/hanami/view/version.rb",
-          "#{root}/hanami/view/errors.rb",
+          "#{root}/hanami2/view/version.rb",
+          "#{root}/hanami2/view/errors.rb",
         )
         loader.inflector.inflect(
           "erb" => "ERB",

@@ -26,7 +26,7 @@ module Hanami2
         # Haml template renderer for Hanami2::View.
         #
         # This differs from the standard Haml::Template by automatically escaping HTML based on a
-        # given string's `#html_safe?`, regardless of when "hanami/view/html" is required.
+        # given string's `#html_safe?`, regardless of when "hanami2/view/html" is required.
         #
         # @see Hanami2::View::Tilt
         # @api private
