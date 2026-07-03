@@ -3,9 +3,9 @@
 require "temple"
 require_relative "engine"
 
-module Hanami
+module Hanami2
   class View
-    # Hanami::View ERB template renderer for Tilt.
+    # Hanami2::View ERB template renderer for Tilt.
     #
     # The key features of this ERB implementation are:
     #
@@ -18,7 +18,7 @@ module Hanami
     # See [Tilt](https://github.com/rtomayko/tilt) for rendering options.
     #
     # @example
-    #   Hanami::View::ERB::Template.new { "<%= 'Hello, world!' %>" }.render
+    #   Hanami2::View::ERB::Template.new { "<%= 'Hello, world!' %>" }.render
     #
     # @api private
     # @since 2.1.0

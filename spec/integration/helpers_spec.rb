@@ -16,7 +16,7 @@ RSpec.describe "helpers" do
       dir = self.dir
       scope_class = self.scope_class
 
-      Class.new(Hanami::View) do
+      Class.new(Hanami2::View) do
         config.paths = dir
         config.template = "template"
         config.scope_class = scope_class
@@ -26,8 +26,8 @@ RSpec.describe "helpers" do
     }
 
     let(:scope_class) {
-      Class.new(Hanami::View::Scope) {
-        include Hanami::View::Helpers::NumberFormattingHelper
+      Class.new(Hanami2::View::Scope) {
+        include Hanami2::View::Helpers::NumberFormattingHelper
       }
     }
 
@@ -46,8 +46,8 @@ RSpec.describe "helpers" do
     end
 
     let(:part_class) {
-      Class.new(Hanami::View::Part) {
-        include Hanami::View::Helpers::NumberFormattingHelper
+      Class.new(Hanami2::View::Part) {
+        include Hanami2::View::Helpers::NumberFormattingHelper
 
         def population_text
           format_number(population)
@@ -59,7 +59,7 @@ RSpec.describe "helpers" do
       dir = self.dir
       part_class  = self.part_class
 
-      Class.new(Hanami::View) {
+      Class.new(Hanami2::View) {
         config.paths = dir
         config.template = "template"
 

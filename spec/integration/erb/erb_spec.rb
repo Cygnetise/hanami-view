@@ -2,9 +2,9 @@
 
 require "tilt/erubi"
 
-RSpec.describe Hanami::View::ERB::Template do
+RSpec.describe Hanami2::View::ERB::Template do
   def render(src, *render_args, template_opts: {}, **render_opts)
-    Hanami::View::ERB::Template.new(**template_opts) { src }
+    Hanami2::View::ERB::Template.new(**template_opts) { src }
       .render(*render_args, **render_opts)
   end
 

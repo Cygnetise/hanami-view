@@ -2,10 +2,10 @@
 
 require "bigdecimal"
 
-RSpec.describe Hanami::View::Helpers::NumberFormattingHelper, "#format_number" do
+RSpec.describe Hanami2::View::Helpers::NumberFormattingHelper, "#format_number" do
   subject(:obj) {
     Class.new {
-      include Hanami::View::Helpers::NumberFormattingHelper
+      include Hanami2::View::Helpers::NumberFormattingHelper
     }.new
   }
 

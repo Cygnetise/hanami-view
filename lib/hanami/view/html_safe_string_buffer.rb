@@ -2,7 +2,7 @@
 
 require "temple"
 
-module Hanami
+module Hanami2
   class View
     # Specialized Temple buffer class that marks block-captured strings as HTML safe.
     #
@@ -20,9 +20,9 @@ module Hanami
     # This filter is included in all three of our supported HTML template engines (ERB, Haml and
     # Slim) to provide consistent behavior across all.
     #
-    # @see Hanami::View::ERB::Engine
-    # @see Hanami::View::HamlAdapter::Template
-    # @see Hanami::View::SlimAdapter::Template
+    # @see Hanami2::View::ERB::Engine
+    # @see Hanami2::View::HamlAdapter::Template
+    # @see Hanami2::View::SlimAdapter::Template
     #
     # @api private
     # @since 2.1.0

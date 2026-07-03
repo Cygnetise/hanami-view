@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-module Hanami
+module Hanami2
   class View
     # Decorates exposure values with matching parts.
     #
@@ -14,7 +14,7 @@ module Hanami
         # @param value [Object] exposure value
         # @param as [Symbol, nil] alternative name to use for part class resolution
         #
-        # @return [Hanami::View::Part] decorated value
+        # @return [Hanami2::View::Part] decorated value
         #
         # @api public
         # @since 2.1.0

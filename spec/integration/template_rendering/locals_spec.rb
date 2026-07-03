@@ -1,6 +1,6 @@
 RSpec.describe "Tempalte rendering / locals" do
   let(:base_view) {
-    Class.new(Hanami::View) do
+    Class.new(Hanami2::View) do
       config.paths = FIXTURES_PATH.join("integration/template_rendering/locals")
     end
   }

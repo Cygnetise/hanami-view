@@ -1,12 +1,12 @@
 # frozen_string_literal: true
 
-# Hanami::View::ERB is based on Temple::ERB::Parser, also released under the MIT licence.
+# Hanami2::View::ERB is based on Temple::ERB::Parser, also released under the MIT licence.
 #
 # Copyright (c) 2010-2023 Magnus Holm.
 
 require "temple"
 
-module Hanami
+module Hanami2
   class View
     module ERB
       # ERB parser for Hanami views.
@@ -57,7 +57,7 @@ module Hanami
       # referenced inside the `[:erb, :block, ..., [:multi]]` sexp.
       #
       # Taking this approach (along with the `on_erb_block` sexp-handling code in
-      # `Hanami::View::ERB::Filters::Block`) allows us to implicitly capture the contents of the
+      # `Hanami2::View::ERB::Filters::Block`) allows us to implicitly capture the contents of the
       # block and output it in place. This means that helpers that expect blocks do not need to
       # explicitly call a `capture` helper (or similar) internally. Instead they can just `yield`,
       # per idiomatic Ruby.
@@ -119,7 +119,7 @@ module Hanami
               when %r{=}
                 # Expression tags: <%= "hello (auto-escaped)" %> or <%== "hello (not escaped)" %>
                 if code =~ BLOCK_LINE_RE
-                  # See Hanami::View::Erb::Filters::Block for the processing of `:erb, :block` sexps
+                  # See Hanami2::View::Erb::Filters::Block for the processing of `:erb, :block` sexps
                   block_node = [:erb, :block, indicator.size == 1, code, (block_content = [:multi])]
                   results.last << block_node
 

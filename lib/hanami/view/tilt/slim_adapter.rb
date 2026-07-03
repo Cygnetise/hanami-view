@@ -2,7 +2,7 @@
 
 require "slim"
 
-module Hanami
+module Hanami2
   class View
     module Tilt
       # @api private
@@ -23,12 +23,12 @@ module Hanami
         # generator into the top-level engine's options, avoiding the warning.
         ::Slim::Engine.define_options(::Slim::Engine.options[:generator].options.valid_keys)
 
-        # Slim template renderer for Hanami::View.
+        # Slim template renderer for Hanami2::View.
         #
         # This differs from the standard Slim::Template by automatically escaping HTML based on a
         # given string's `#html_safe?`, regardless of when "hanami/view/html" is required.
         #
-        # @see Hanami::View::Tilt
+        # @see Hanami2::View::Tilt
         # @api private
         # @since 2.1.0
         Template = Temple::Templates::Tilt(

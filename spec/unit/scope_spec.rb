@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-RSpec.describe Hanami::View::Scope do
+RSpec.describe Hanami2::View::Scope do
   let(:locals) { {} }
 
   context "with a rendering" do
@@ -8,7 +8,7 @@ RSpec.describe Hanami::View::Scope do
 
     let(:rendering) { view.rendering(format: :html) }
     let(:view) {
-      Class.new(Hanami::View) {
+      Class.new(Hanami2::View) {
         config.paths = SPEC_ROOT.join("fixtures/templates")
         config.template = "hello"
       }.new
@@ -103,19 +103,19 @@ RSpec.describe Hanami::View::Scope do
 
     describe "#render" do
       it "raises an error" do
-        expect { scope.render(:info) }.to raise_error(Hanami::View::RenderingMissingError)
+        expect { scope.render(:info) }.to raise_error(Hanami2::View::RenderingMissingError)
       end
     end
 
     describe "#scope" do
       it "raises an error" do
-        expect { scope.scope(:info) }.to raise_error(Hanami::View::RenderingMissingError)
+        expect { scope.scope(:info) }.to raise_error(Hanami2::View::RenderingMissingError)
       end
     end
 
     describe "#_context" do
       it "raises an error" do
-        expect { scope._context }.to raise_error(Hanami::View::RenderingMissingError)
+        expect { scope._context }.to raise_error(Hanami2::View::RenderingMissingError)
       end
     end
   end

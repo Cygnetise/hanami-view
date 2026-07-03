@@ -2,7 +2,7 @@
 
 require "tilt"
 
-module Hanami
+module Hanami2
   class View
     # @api private
     # @since 2.1.0
@@ -15,16 +15,16 @@ module Hanami
         mapping.unregister "slim"
 
         # Register our own ERB template.
-        mapping.register_lazy "Hanami::View::ERB::Template", "hanami/view/erb/template", "erb", "rhtml"
+        mapping.register_lazy "Hanami2::View::ERB::Template", "hanami/view/erb/template", "erb", "rhtml"
 
         # Register ERB templates for Haml and Slim that set the `use_html_safe: true` option.
         #
         # Our template namespaces below have the "Adapter" suffix to work around a bug in Tilt's
         # `Mapping#const_defined?`, which (if slim was already required) would receive
-        # "Hanami::View::Slim::Template" and return `Slim::Template`, which is the opposite of what
+        # "Hanami2::View::Slim::Template" and return `Slim::Template`, which is the opposite of what
         # we want.
-        mapping.register_lazy "Hanami::View::Tilt::HamlAdapter::Template", "hanami/view/tilt/haml_adapter", "haml"
-        mapping.register_lazy "Hanami::View::Tilt::SlimAdapter::Template", "hanami/view/tilt/slim_adapter", "slim"
+        mapping.register_lazy "Hanami2::View::Tilt::HamlAdapter::Template", "hanami/view/tilt/haml_adapter", "haml"
+        mapping.register_lazy "Hanami2::View::Tilt::SlimAdapter::Template", "hanami/view/tilt/slim_adapter", "slim"
       }
 
       class << self

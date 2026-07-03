@@ -2,7 +2,7 @@
 
 require "dry/core/equalizer"
 
-module Hanami
+module Hanami2
   class View
     # An exposure defined on a view
     #

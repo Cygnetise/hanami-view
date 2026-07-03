@@ -2,7 +2,7 @@
 
 require "dry/core/equalizer"
 
-module Hanami
+module Hanami2
   class View
     # The output of a view rendering.
     #
@@ -24,7 +24,7 @@ module Hanami
 
       # Returns the hash of locals used to render the view output.
       #
-      # @return [Hash[<Symbol, Hanami::View::Part>] locals hash
+      # @return [Hash[<Symbol, Hanami2::View::Part>] locals hash
       #
       # @api public
       # @since 2.1.0
@@ -41,7 +41,7 @@ module Hanami
       #
       # @param name [Symbol] local key
       #
-      # @return [Hanami::View::Part]
+      # @return [Hanami2::View::Part]
       #
       # @api public
       # @since 2.1.0

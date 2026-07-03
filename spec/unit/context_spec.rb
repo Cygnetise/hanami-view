@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
-RSpec.describe Hanami::View::Context do
+RSpec.describe Hanami2::View::Context do
   let(:rendering) {
-    Class.new(Hanami::View) {
+    Class.new(Hanami2::View) {
       config.paths = FIXTURES_PATH
       config.template = "_"
     }.new.rendering(format: :html)
@@ -10,7 +10,7 @@ RSpec.describe Hanami::View::Context do
 
   describe "#dup_for_rendering" do
     let(:context_class) {
-      Class.new(Hanami::View::Context) {
+      Class.new(Hanami2::View::Context) {
         attr_reader :injected_obj, :internal_var
 
         def initialize(injected_obj:)
@@ -38,7 +38,7 @@ RSpec.describe Hanami::View::Context do
     subject(:context) { context_class.new(assets: assets) }
 
     let(:context_class) {
-      Class.new(Hanami::View::Context) {
+      Class.new(Hanami2::View::Context) {
         attr_reader :assets
 
         decorate :assets
@@ -53,7 +53,7 @@ RSpec.describe Hanami::View::Context do
 
     context "without rendering" do
       it "raises a RenderingMissingError" do
-        expect { context.assets }.to raise_error(Hanami::View::RenderingMissingError)
+        expect { context.assets }.to raise_error(Hanami2::View::RenderingMissingError)
       end
     end
 
@@ -62,7 +62,7 @@ RSpec.describe Hanami::View::Context do
 
       describe "attribute readers" do
         it "provides attributes decorated in view parts" do
-          expect(context.assets).to be_a Hanami::View::Part
+          expect(context.assets).to be_a Hanami2::View::Part
           expect(context.assets.value).to eq assets
         end
       end

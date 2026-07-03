@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-RSpec.describe Hanami::View::Exposures do
+RSpec.describe Hanami2::View::Exposures do
   subject(:exposures) { described_class.new }
 
   describe "#exposures" do

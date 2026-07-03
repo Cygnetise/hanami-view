@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-module Hanami
+module Hanami2
   class View
     # HTML-focused behavior for strings intended to be output in templates.
     #
@@ -60,15 +60,15 @@ module Hanami
       # @api private
       # @since 2.1.0
       module StringExtensions
-        # Returns the string as a {Hanami::View::HTML::SafeString}, ensuring the string is not
+        # Returns the string as a {Hanami2::View::HTML::SafeString}, ensuring the string is not
         # automatically escaped when used in HTML view templates.
         #
-        # @return [Hanami::View::HTML::SafeString]
+        # @return [Hanami2::View::HTML::SafeString]
         #
         # @api public
         # @since 2.1.0
         def html_safe
-          Hanami::View::HTML::SafeString.new(self)
+          Hanami2::View::HTML::SafeString.new(self)
         end
       end
     end
@@ -83,7 +83,7 @@ class String
   #
   # Having our `#html_safe` available via this module also means that a user can also choose to
   # _undefine_ this method within the module if they'd rather use Active Support's.
-  prepend Hanami::View::HTML::StringExtensions
+  prepend Hanami2::View::HTML::StringExtensions
 end
 
 class Object

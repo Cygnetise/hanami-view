@@ -1,9 +1,9 @@
 # frozen_string_literal: true
 
-RSpec.describe Hanami::View::Helpers::EscapeHelper do
+RSpec.describe Hanami2::View::Helpers::EscapeHelper do
   subject(:obj) {
     Class.new {
-      include Hanami::View::Helpers::EscapeHelper
+      include Hanami2::View::Helpers::EscapeHelper
     }.new
   }
 

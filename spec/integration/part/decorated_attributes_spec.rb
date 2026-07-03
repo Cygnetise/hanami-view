@@ -59,17 +59,17 @@ RSpec.describe "Part / Decorated attributes" do
   }
 
   let(:rendering) {
-    Hanami::View::Rendering.new(
+    Hanami2::View::Rendering.new(
       config: view.config,
       format: :html,
-      context: Hanami::View::Context.new
+      context: Hanami2::View::Context.new
     )
   }
 
   let(:view) {
     part_builder = self.part_builder if respond_to?(:part_builder)
 
-    Class.new(Hanami::View) {
+    Class.new(Hanami2::View) {
       config.part_builder = part_builder if part_builder
     }
   }
@@ -78,15 +78,15 @@ RSpec.describe "Part / Decorated attributes" do
     describe "decorating without options" do
       describe "multiple declarations" do
         let(:article_part_class) {
-          Class.new(Hanami::View::Part) do
+          Class.new(Hanami2::View::Part) do
             decorate :author
             decorate :comments
           end
         }
 
-        it "decorates attributes with the standard Hanami::View::Part class" do
-          expect(article_part.author).to be_a Hanami::View::Part
-          expect(article_part.comments[0]).to be_a Hanami::View::Part
+        it "decorates attributes with the standard Hanami2::View::Part class" do
+          expect(article_part.author).to be_a Hanami2::View::Part
+          expect(article_part.comments[0]).to be_a Hanami2::View::Part
         end
 
         context "falsey values" do
@@ -100,14 +100,14 @@ RSpec.describe "Part / Decorated attributes" do
 
       describe "single declaration" do
         let(:article_part_class) {
-          Class.new(Hanami::View::Part) do
+          Class.new(Hanami2::View::Part) do
             decorate :author, :comments
           end
         }
 
-        it "decorates attributes with the standard Hanami::View::Part class" do
-          expect(article_part.author).to be_a Hanami::View::Part
-          expect(article_part.comments[0]).to be_a Hanami::View::Part
+        it "decorates attributes with the standard Hanami2::View::Part class" do
+          expect(article_part.author).to be_a Hanami2::View::Part
+          expect(article_part.comments[0]).to be_a Hanami2::View::Part
         end
 
         context "falsey values" do
@@ -123,16 +123,16 @@ RSpec.describe "Part / Decorated attributes" do
     describe "decorating with part class specified" do
       before do
         module Test
-          class AuthorPart < Hanami::View::Part
+          class AuthorPart < Hanami2::View::Part
           end
 
-          class CommentPart < Hanami::View::Part
+          class CommentPart < Hanami2::View::Part
           end
         end
       end
 
       let(:article_part_class) {
-        Class.new(Hanami::View::Part) do
+        Class.new(Hanami2::View::Part) do
           decorate :author, as: Test::AuthorPart
           decorate :comments, as: Test::CommentPart
         end
@@ -155,14 +155,14 @@ RSpec.describe "Part / Decorated attributes" do
 
   describe "using custom part builder" do
     let(:article_part_class) {
-      Class.new(Hanami::View::Part) do
+      Class.new(Hanami2::View::Part) do
         decorate :author
         decorate :comments
       end
     }
 
     let(:part_builder) {
-      Class.new(Hanami::View::PartBuilder) do
+      Class.new(Hanami2::View::PartBuilder) do
         class << self
           def part_class(name:, **options)
             part_name = Dry::Core::Inflector.camelize(name)
@@ -179,10 +179,10 @@ RSpec.describe "Part / Decorated attributes" do
 
     before do
       module Test
-        class AuthorPart < Hanami::View::Part
+        class AuthorPart < Hanami2::View::Part
         end
 
-        class CommentPart < Hanami::View::Part
+        class CommentPart < Hanami2::View::Part
           decorate :author
         end
       end

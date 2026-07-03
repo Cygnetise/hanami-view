@@ -2,7 +2,7 @@
 
 RSpec.describe "Template engines / haml" do
   let(:base_view) {
-    Class.new(Hanami::View) do
+    Class.new(Hanami2::View) do
       config.paths = FIXTURES_PATH.join("integration/template_engines/haml")
     end
   }
@@ -27,7 +27,7 @@ RSpec.describe "Template engines / haml" do
   end
 
   it "supports methods that yield" do
-    context = Class.new(Hanami::View::Context) do
+    context = Class.new(Hanami2::View::Context) do
       def wrapper
         "<wrapper>#{yield}</wrapper>".html_safe
       end
@@ -54,7 +54,7 @@ RSpec.describe "Template engines / haml" do
         %div goes here.
     HAML
 
-    output = Hanami::View::Tilt::HamlAdapter::Template.new { src }.render(scope)
+    output = Hanami2::View::Tilt::HamlAdapter::Template.new { src }.render(scope)
 
     expect(output.strip).to eq "true"
   end
@@ -76,7 +76,7 @@ RSpec.describe "Template engines / haml" do
           %div Nested content here.
     HAML
 
-    output = Hanami::View::Tilt::HamlAdapter::Template.new { src }.render(scope)
+    output = Hanami2::View::Tilt::HamlAdapter::Template.new { src }.render(scope)
 
     expect(output.strip).to eq "true: <div>Some content here.</div>\ntrue: <div>Nested content here.</div>"
   end

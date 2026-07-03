@@ -2,9 +2,9 @@
 
 require "tilt/erubi"
 
-RSpec.describe Hanami::View do
+RSpec.describe Hanami2::View do
   subject(:view) {
-    Class.new(Hanami::View) do
+    Class.new(Hanami2::View) do
       config.paths = SPEC_ROOT.join("fixtures/templates")
       config.layout = "app"
       config.template = "user"
@@ -20,7 +20,7 @@ RSpec.describe Hanami::View do
   }
 
   let(:context) do
-    Class.new(Hanami::View::Context) do
+    Class.new(Hanami2::View::Context) do
       def title
         "Test"
       end
@@ -49,7 +49,7 @@ RSpec.describe Hanami::View do
 
   describe "layout rendering" do
     subject(:view) {
-      Class.new(Hanami::View) {
+      Class.new(Hanami2::View) {
         config.paths = SPEC_ROOT.join("fixtures/templates")
         config.layout = "missing_layout"
         config.template = "user"
@@ -65,35 +65,35 @@ RSpec.describe Hanami::View do
     }
 
     it "raises a LayoutNotFoundError error when layout cannot be found" do
-      expect { view.() }.to raise_error Hanami::View::TemplateNotFoundError, %r{Template `layouts/missing_layout' for format `html' could not be found}
+      expect { view.() }.to raise_error Hanami2::View::TemplateNotFoundError, %r{Template `layouts/missing_layout' for format `html' could not be found}
     end
   end
 
   describe "template rendering" do
     it "raises a TemplateNotFoundError when the template cannot be found" do
-      view = Class.new(Hanami::View) {
+      view = Class.new(Hanami2::View) {
         config.paths = SPEC_ROOT.join("fixtures/templates")
         config.layout = nil
         config.template = "missing_template"
       }.new
 
-      expect { view.() }.to raise_error Hanami::View::TemplateNotFoundError, /Template `missing_template' for format `html' could not be found/
+      expect { view.() }.to raise_error Hanami2::View::TemplateNotFoundError, /Template `missing_template' for format `html' could not be found/
     end
 
     it "raises a TemplateNotFoundError when a partial cannot be found from inside the layout" do
-      view = Class.new(Hanami::View) {
+      view = Class.new(Hanami2::View) {
         config.paths = SPEC_ROOT.join("fixtures/templates")
         config.layout = "missing_partial"
         config.template = "empty"
       }.new
 
-      expect { view.() }.to raise_error Hanami::View::TemplateNotFoundError, /Template `_missing_partial' for format `html' could not be found/
+      expect { view.() }.to raise_error Hanami2::View::TemplateNotFoundError, /Template `_missing_partial' for format `html' could not be found/
     end
   end
 
   describe "renderer options" do
     subject(:view) {
-      Class.new(Hanami::View) do
+      Class.new(Hanami2::View) do
         config.paths = SPEC_ROOT.join("fixtures/templates")
         config.template = "view_renderer_options"
         config.renderer_engine_mapping = {erb: Tilt::ErubiTemplate}
@@ -120,7 +120,7 @@ RSpec.describe Hanami::View do
     end
 
     subject(:context) {
-      Class.new(Hanami::View::Context) do
+      Class.new(Hanami2::View::Context) do
         def form(action:, &blk)
           Test::Form.new(action, &blk)
         end

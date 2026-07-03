@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-RSpec.describe Hanami::View::Helpers::TagHelper do
+RSpec.describe Hanami2::View::Helpers::TagHelper do
   describe "#tag" do
     def tag(...)
       described_class.tag(...)
@@ -313,11 +313,11 @@ RSpec.describe Hanami::View::Helpers::TagHelper do
 
     describe "in templates" do
       let(:scope) {
-        Class.new { include Hanami::View::Helpers::TagHelper }.new
+        Class.new { include Hanami2::View::Helpers::TagHelper }.new
       }
 
       def erb(str)
-        Hanami::View::ERB::Template.new { str }.render(scope)
+        Hanami2::View::ERB::Template.new { str }.render(scope)
       end
 
       it "includes content mixing nested tags as well as ordinary template content" do
@@ -469,11 +469,11 @@ RSpec.describe Hanami::View::Helpers::TagHelper do
 
     describe "in templates" do
       let(:scope) {
-        Class.new { include Hanami::View::Helpers::TagHelper }.new
+        Class.new { include Hanami2::View::Helpers::TagHelper }.new
       }
 
       def erb(str)
-        Hanami::View::ERB::Template.new { str }.render(scope)
+        Hanami2::View::ERB::Template.new { str }.render(scope)
       end
 
       it "includes ordinary template content inside links" do

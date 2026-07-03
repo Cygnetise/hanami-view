@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
-RSpec.describe "Template engines / erb (Hanami::View::ERB)" do
+RSpec.describe "Template engines / erb (Hanami2::View::ERB)" do
   let(:base_view) {
-    Class.new(Hanami::View) do
+    Class.new(Hanami2::View) do
       config.paths = FIXTURES_PATH.join("integration/template_engines/erb")
     end
   }
@@ -27,7 +27,7 @@ RSpec.describe "Template engines / erb (Hanami::View::ERB)" do
   end
 
   it "supports context methods that yield" do
-    context = Class.new(Hanami::View::Context) do
+    context = Class.new(Hanami2::View::Context) do
       def wrapper
         "<wrapper>#{yield}</wrapper>".html_safe
       end

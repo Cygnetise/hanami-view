@@ -6,7 +6,7 @@ RSpec::Matchers.define :scope_including do |locals|
   end
 end
 
-RSpec.describe Hanami::View::Part do
+RSpec.describe Hanami2::View::Part do
   let(:name) { :user }
   let(:value) { double(:value) }
   let(:rendering) {
@@ -15,7 +15,7 @@ RSpec.describe Hanami::View::Part do
     end
   }
   let(:view) {
-    Class.new(Hanami::View) {
+    Class.new(Hanami2::View) {
       config.paths = SPEC_ROOT.join("fixtures/templates")
       config.template = "hello"
     }.new
@@ -62,7 +62,7 @@ RSpec.describe Hanami::View::Part do
 
     describe "#inspect" do
       it "includes the class name, name, and value only" do
-        expect(part.inspect).to eq "#<Hanami::View::Part name=:user value=#<Double :value>>"
+        expect(part.inspect).to eq "#<Hanami2::View::Part name=:user value=#<Double :value>>"
       end
     end
 
@@ -122,19 +122,19 @@ RSpec.describe Hanami::View::Part do
 
     describe "#format" do
       it "raises an error" do
-        expect { part.render("info") }.to raise_error(Hanami::View::RenderingMissingError)
+        expect { part.render("info") }.to raise_error(Hanami2::View::RenderingMissingError)
       end
     end
 
     describe "#render" do
       it "raises an error" do
-        expect { part.render("info") }.to raise_error(Hanami::View::RenderingMissingError)
+        expect { part.render("info") }.to raise_error(Hanami2::View::RenderingMissingError)
       end
     end
 
     describe "#scope" do
       it "raises an error" do
-        expect { part.scope("info") }.to raise_error(Hanami::View::RenderingMissingError)
+        expect { part.scope("info") }.to raise_error(Hanami2::View::RenderingMissingError)
       end
     end
   end
@@ -143,7 +143,7 @@ RSpec.describe Hanami::View::Part do
     describe "#_name" do
       context "when class has a name" do
         before do
-          Test::MyPart = Class.new(Hanami::View::Part)
+          Test::MyPart = Class.new(Hanami2::View::Part)
         end
 
         subject(:part) {
@@ -157,7 +157,7 @@ RSpec.describe Hanami::View::Part do
 
       context "when class is anonymous" do
         subject(:part) {
-          Class.new(Hanami::View::Part).new(value: value)
+          Class.new(Hanami2::View::Part).new(value: value)
         }
 
         it "defaults to 'part'" do

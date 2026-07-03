@@ -3,7 +3,7 @@
 RSpec.describe "part builder" do
   before do
     module Test
-      class Custom < Hanami::View::Part
+      class Custom < Hanami2::View::Part
         def to_s
           "Custom part wrapping #{_value}"
         end
@@ -11,7 +11,7 @@ RSpec.describe "part builder" do
 
       CustomPart = Custom
 
-      class CustomArrayPart < Hanami::View::Part
+      class CustomArrayPart < Hanami2::View::Part
         def each(&block)
           (_value * 2).each(&block)
         end
@@ -20,21 +20,21 @@ RSpec.describe "part builder" do
   end
 
   describe "default part builder" do
-    it "defaults to creating instances of Hanami::View::Part" do
-      view = Class.new(Hanami::View) do
+    it "defaults to creating instances of Hanami2::View::Part" do
+      view = Class.new(Hanami2::View) do
         config.paths = SPEC_ROOT.join("__ignore__")
         config.template = "__ignore__"
       end.new
 
       part = view.rendering.part(:my_part, Object.new)
 
-      expect(part).to be_an_instance_of Hanami::View::Part
+      expect(part).to be_an_instance_of Hanami2::View::Part
     end
 
     it "create instances of a configured part_class" do
-      part_class = Class.new(Hanami::View::Part)
+      part_class = Class.new(Hanami2::View::Part)
 
-      view = Class.new(Hanami::View) do
+      view = Class.new(Hanami2::View) do
         config.paths = SPEC_ROOT.join("__ignore__")
         config.template = "__ignore__"
 
@@ -47,7 +47,7 @@ RSpec.describe "part builder" do
     end
 
     it "looks up classes from a part namespace" do
-      view = Class.new(Hanami::View) do
+      view = Class.new(Hanami2::View) do
         config.paths = SPEC_ROOT.join("fixtures/templates")
         config.layout = nil
         config.template = "decorated_parts"
@@ -64,7 +64,7 @@ RSpec.describe "part builder" do
     end
 
     it "wraps array members in custom part classes provided to exposure :as option" do
-      view = Class.new(Hanami::View) do
+      view = Class.new(Hanami2::View) do
         config.paths = SPEC_ROOT.join("fixtures/templates")
         config.layout = nil
         config.template = "decorated_parts"
@@ -80,7 +80,7 @@ RSpec.describe "part builder" do
     end
 
     it "wraps an array and its members in custom part classes provided to exposure :as option as an array" do
-      view = Class.new(Hanami::View) do
+      view = Class.new(Hanami2::View) do
         config.paths = SPEC_ROOT.join("fixtures/templates")
         config.layout = nil
         config.template = "decorated_parts"
@@ -98,7 +98,7 @@ RSpec.describe "part builder" do
 
   describe "custom part builder and part classes" do
     it "supports wrapping in custom parts based on exposure names" do
-      part_builder = Class.new(Hanami::View::PartBuilder) do
+      part_builder = Class.new(Hanami2::View::PartBuilder) do
         class << self
           def part_class(name:, **options)
             name == :custom ? Test::CustomPart : super
@@ -106,7 +106,7 @@ RSpec.describe "part builder" do
         end
       end
 
-      view = Class.new(Hanami::View) do
+      view = Class.new(Hanami2::View) do
         config.part_builder = part_builder
         config.paths = SPEC_ROOT.join("fixtures/templates")
         config.layout = nil

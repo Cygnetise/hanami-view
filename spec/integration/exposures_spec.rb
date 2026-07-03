@@ -2,7 +2,7 @@
 
 RSpec.describe "exposures" do
   let(:context) {
-    Class.new(Hanami::View::Context) do
+    Class.new(Hanami2::View::Context) do
       def title
         "hanami-view rocks!"
       end
@@ -14,7 +14,7 @@ RSpec.describe "exposures" do
   }
 
   it "uses exposures with blocks to build view locals" do
-    view = Class.new(Hanami::View) do
+    view = Class.new(Hanami2::View) do
       config.paths = SPEC_ROOT.join("fixtures/templates")
       config.layout = "app"
       config.template = "users"
@@ -38,7 +38,7 @@ RSpec.describe "exposures" do
   end
 
   it "gives the exposure blocks access to the view instance" do
-    view = Class.new(Hanami::View) do
+    view = Class.new(Hanami2::View) do
       config.paths = SPEC_ROOT.join("fixtures/templates")
       config.layout = "app"
       config.template = "users"
@@ -69,7 +69,7 @@ RSpec.describe "exposures" do
   end
 
   it "supports instance methods as exposures" do
-    view = Class.new(Hanami::View) do
+    view = Class.new(Hanami2::View) do
       config.paths = SPEC_ROOT.join("fixtures/templates")
       config.layout = "app"
       config.template = "users"
@@ -97,7 +97,7 @@ RSpec.describe "exposures" do
   end
 
   it "passes matching input data if no proc or instance method is available" do
-    view = Class.new(Hanami::View) do
+    view = Class.new(Hanami2::View) do
       config.paths = SPEC_ROOT.join("fixtures/templates")
       config.layout = "app"
       config.template = "users"
@@ -117,7 +117,7 @@ RSpec.describe "exposures" do
   end
 
   it "using default values" do
-    view = Class.new(Hanami::View) do
+    view = Class.new(Hanami2::View) do
       config.paths = SPEC_ROOT.join("fixtures/templates")
       config.layout = "app"
       config.template = "users"
@@ -132,7 +132,7 @@ RSpec.describe "exposures" do
   end
 
   it "having default values but passing nil as value for exposure" do
-    view = Class.new(Hanami::View) do
+    view = Class.new(Hanami2::View) do
       config.paths = SPEC_ROOT.join("fixtures/templates")
       config.layout = "app"
       config.template = "greeting"
@@ -147,7 +147,7 @@ RSpec.describe "exposures" do
   end
 
   it "allows exposures to depend on each other" do
-    view = Class.new(Hanami::View) do
+    view = Class.new(Hanami2::View) do
       config.paths = SPEC_ROOT.join("fixtures/templates")
       config.layout = "app"
       config.template = "users_with_count"
@@ -172,14 +172,14 @@ RSpec.describe "exposures" do
 
   it "wraps exposures in view parts before they are supplied as dependencies" do
     module Test
-      class UserPart < Hanami::View::Part
+      class UserPart < Hanami2::View::Part
         def display_name
           "User: #{value[:name]}"
         end
       end
     end
 
-    view = Class.new(Hanami::View) do
+    view = Class.new(Hanami2::View) do
       config.paths = SPEC_ROOT.join("fixtures/templates")
       config.layout = "app"
       config.template = "users_with_count"
@@ -203,17 +203,17 @@ RSpec.describe "exposures" do
 
     rendered = view.(users: users, context: context)
 
-    expect(rendered[:users]).to be_a(Hanami::View::Part)
+    expect(rendered[:users]).to be_a(Hanami2::View::Part)
 
     expect(rendered[:users][0]).to be_a(Test::UserPart)
     expect(rendered[:users][0].value).to eq(name: "Jane", email: "jane@doe.org")
 
-    expect(rendered[:article]).to be_a(Hanami::View::Part)
+    expect(rendered[:article]).to be_a(Hanami2::View::Part)
     expect(rendered[:article].to_s).to eq "Great article from User: Jane"
   end
 
   it "allows exposures to depend on each other while still using keyword args to access input data" do
-    view = Class.new(Hanami::View) do
+    view = Class.new(Hanami2::View) do
       config.paths = SPEC_ROOT.join("fixtures/templates")
       config.layout = "app"
       config.template = "greeting"
@@ -234,7 +234,7 @@ RSpec.describe "exposures" do
   end
 
   it "supports default values for keyword arguments" do
-    view = Class.new(Hanami::View) do
+    view = Class.new(Hanami2::View) do
       config.paths = SPEC_ROOT.join("fixtures/templates")
       config.layout = "app"
       config.template = "greeting"
@@ -255,7 +255,7 @@ RSpec.describe "exposures" do
   end
 
   it "only passes keywords arguments that are needed in the block and allows for default values" do
-    view = Class.new(Hanami::View) do
+    view = Class.new(Hanami2::View) do
       config.paths = SPEC_ROOT.join("fixtures/templates")
       config.layout = "app"
       config.template = "edit"
@@ -276,7 +276,7 @@ RSpec.describe "exposures" do
   end
 
   it "supports defining multiple exposures at once" do
-    view = Class.new(Hanami::View) do
+    view = Class.new(Hanami2::View) do
       config.paths = SPEC_ROOT.join("fixtures/templates")
       config.layout = "app"
       config.template = "users_with_count"
@@ -302,7 +302,7 @@ RSpec.describe "exposures" do
   end
 
   it "allows exposures to be hidden from the view" do
-    view = Class.new(Hanami::View) do
+    view = Class.new(Hanami2::View) do
       config.paths = SPEC_ROOT.join("fixtures/templates")
       config.layout = "app"
       config.template = "users_with_count"
@@ -335,7 +335,7 @@ RSpec.describe "exposures" do
   end
 
   it "inherit exposures from parent class" do
-    parent = Class.new(Hanami::View) do
+    parent = Class.new(Hanami2::View) do
       config.paths = SPEC_ROOT.join("fixtures/templates")
       config.layout = "app"
       config.template = "users_with_count_inherit"
@@ -374,7 +374,7 @@ RSpec.describe "exposures" do
   end
 
   it "inherit exposures from parent class and allow to override them" do
-    parent = Class.new(Hanami::View) do
+    parent = Class.new(Hanami2::View) do
       config.paths = SPEC_ROOT.join("fixtures/templates")
       config.layout = "app"
       config.template = "users_with_count_inherit"
@@ -417,7 +417,7 @@ RSpec.describe "exposures" do
   end
 
   it "makes exposures available to layout" do
-    view = Class.new(Hanami::View) do
+    view = Class.new(Hanami2::View) do
       config.paths = SPEC_ROOT.join("fixtures/templates")
       config.layout = "app_with_users"
       config.template = "users"

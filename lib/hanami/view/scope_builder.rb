@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-module Hanami
+module Hanami2
   class View
     # Builds scope objects via matching classes
     #
@@ -13,7 +13,7 @@ module Hanami
         # @param name [Symbol, Class] scope name
         # @param locals [Hash<Symbol, Object>] locals hash
         #
-        # @return [Hanami::View::Scope]
+        # @return [Hanami2::View::Scope]
         #
         # @api public
         # @since 2.1.0

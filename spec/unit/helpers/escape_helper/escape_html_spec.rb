@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-RSpec.describe Hanami::View::Helpers::EscapeHelper, ".escape_html" do
+RSpec.describe Hanami2::View::Helpers::EscapeHelper, ".escape_html" do
   def escape_html(...)
     described_class.escape_html(...)
   end

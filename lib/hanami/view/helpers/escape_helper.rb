@@ -3,7 +3,7 @@
 require "temple"
 require "uri"
 
-module Hanami
+module Hanami2
   class View
     module Helpers
       # Helper methods for escaping content for safely including in HTML.
@@ -15,15 +15,15 @@ module Hanami
       # classes, or in specific classes as required.
       #
       # @example Standalone usage
-      #   class BasePart < Hanami::View::Part
-      #     include Hanami::View::Helpers::EscapeHelper
+      #   class BasePart < Hanami2::View::Part
+      #     include Hanami2::View::Helpers::EscapeHelper
       #   end
       #
-      #   class BaseScope < Hanami::View::Scope
-      #     include Hanami::View::Helpers::EscapeHelper
+      #   class BaseScope < Hanami2::View::Scope
+      #     include Hanami2::View::Helpers::EscapeHelper
       #   end
       #
-      #   class BaseView < Hanami::View
+      #   class BaseView < Hanami2::View
       #     config.part_class = BasePart
       #     config.scope_class = BaseScope
       #   end
@@ -43,7 +43,7 @@ module Hanami
         # Marks the escaped string marked as HTML safe, ensuring it will not be escaped again.
         #
         # @param input [String] the input string
-        # @return [Hanami::View::HTML::SafeString] the escaped string
+        # @return [Hanami2::View::HTML::SafeString] the escaped string
         #
         # @example
         #   escape_html("Safe content")
@@ -74,7 +74,7 @@ module Hanami
         #
         # @param array [Array<#to_s>] the array
         # @param separator[String] the separator for the joined string
-        # @return [Hanami::View::HTML::SafeString] the escaped string
+        # @return [Hanami2::View::HTML::SafeString] the escaped string
         #
         # @example
         #   safe_join([raw("<p>foo</p>"), "<p>bar</p>"], "<br>")
@@ -204,7 +204,7 @@ module Hanami
         # peril.
         #
         # @param input [String] the input
-        # @return [Hanami::View::HTML::SafeString] the string marked as HTML safe
+        # @return [Hanami2::View::HTML::SafeString] the string marked as HTML safe
         #
         # @example
         #   raw(user.name) # => "Little Bobby <alert>Tables</alert>"

@@ -3,7 +3,7 @@
 require "json"
 require "set"
 
-module Hanami
+module Hanami2
   class View
     module Helpers
       module TagHelper

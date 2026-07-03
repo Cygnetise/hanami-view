@@ -2,7 +2,7 @@
 
 require "set"
 
-module Hanami
+module Hanami2
   class View
     # Decorates attributes in Parts.
     #
@@ -27,7 +27,7 @@ module Hanami
         # current render environment.
         #
         # @example
-        #   class Article < Hanami::View::Part
+        #   class Article < Hanami2::View::Part
         #     decorate :feature_image
         #     decorate :author as: :person
         #   end

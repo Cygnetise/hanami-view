@@ -1,11 +1,11 @@
 # frozen_string_literal: true
 
-RSpec.describe Hanami::View::Renderer do
-  subject(:renderer) { Hanami::View::Renderer.new(view_class.config) }
+RSpec.describe Hanami2::View::Renderer do
+  subject(:renderer) { Hanami2::View::Renderer.new(view_class.config) }
 
   let(:view_class) {
-    Class.new(Hanami::View) {
-      config.paths = Hanami::View::Path.new(SPEC_ROOT.join("fixtures/templates"))
+    Class.new(Hanami2::View) {
+      config.paths = Hanami2::View::Path.new(SPEC_ROOT.join("fixtures/templates"))
       finalize!
     }
   }
@@ -20,7 +20,7 @@ RSpec.describe Hanami::View::Renderer do
     it "raises error when template cannot be found" do
       expect {
         renderer.template("missing_template", :html, scope)
-      }.to raise_error(Hanami::View::TemplateNotFoundError, /missing_template.*html/)
+      }.to raise_error(Hanami2::View::TemplateNotFoundError, /missing_template.*html/)
     end
   end
 
@@ -36,7 +36,7 @@ RSpec.describe Hanami::View::Renderer do
     it "raises error when partial cannot be found" do
       expect {
         renderer.partial("missing_partial", :html, scope)
-      }.to raise_error(Hanami::View::TemplateNotFoundError, /_missing_partial/)
+      }.to raise_error(Hanami2::View::TemplateNotFoundError, /_missing_partial/)
     end
   end
 end

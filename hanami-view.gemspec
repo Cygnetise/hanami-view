@@ -5,11 +5,11 @@ $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 require 'hanami/view/version'
 
 Gem::Specification.new do |spec|
-  spec.name          = 'hanami-view'
+  spec.name          = 'hanami2-view'
   spec.authors       = ["Tim Riley", "Piotr Solnica"]
   spec.email         = ["tim@icelab.com.au", "piotr.solnica@gmail.com"]
   spec.license       = 'MIT'
-  spec.version       = Hanami::View::VERSION.dup
+  spec.version       = Hanami2::View::VERSION.dup
 
   spec.summary       = "A complete, standalone view rendering system that gives you everything you need to write well-factored view code"
   spec.description   = spec.summary

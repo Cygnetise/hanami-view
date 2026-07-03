@@ -2,7 +2,7 @@
 
 require "dry/core/equalizer"
 
-module Hanami
+module Hanami2
   class View
     # Decorates an exposure value and provides a place to encapsulate
     # view-specific behavior alongside your application's domain objects.
@@ -155,7 +155,7 @@ module Hanami
       #   scope class
       # @param locals [Hash<Symbol, Object>] other locals to provide the partial
       #
-      # @return [Hanami::View::Scope] scope
+      # @return [Hanami2::View::Scope] scope
       #
       # @api public
       # @since 2.1.0

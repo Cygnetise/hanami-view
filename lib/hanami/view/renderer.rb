@@ -2,7 +2,7 @@
 
 require_relative "errors"
 
-module Hanami
+module Hanami2
   class View
     # @api private
     # @since 2.1.0
@@ -80,7 +80,7 @@ module Hanami
 
       def tilt(path)
         View.cache.fetch_or_store(:tilt, path, config) {
-          Hanami::View::Tilt[path, config.renderer_engine_mapping, config.renderer_options]
+          Hanami2::View::Tilt[path, config.renderer_engine_mapping, config.renderer_options]
         }
       end
     end

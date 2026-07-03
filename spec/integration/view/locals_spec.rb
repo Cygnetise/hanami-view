@@ -2,7 +2,7 @@
 
 RSpec.describe "View / locals" do
   specify "locals are decorated with parts by default" do
-    view = Class.new(Hanami::View) do
+    view = Class.new(Hanami2::View) do
       config.paths = SPEC_ROOT.join("fixtures/templates")
       config.template = "greeting"
 
@@ -11,11 +11,11 @@ RSpec.describe "View / locals" do
 
     local = view.(greeting: "Hello").locals[:greeting]
 
-    expect(local).to be_a(Hanami::View::Part)
+    expect(local).to be_a(Hanami2::View::Part)
   end
 
   specify "locals are not decorated if their exposure is marked as `decorate: false`" do
-    view = Class.new(Hanami::View) do
+    view = Class.new(Hanami2::View) do
       config.paths = SPEC_ROOT.join("fixtures/templates")
       config.template = "greeting"
 

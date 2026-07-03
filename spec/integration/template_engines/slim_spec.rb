@@ -2,7 +2,7 @@
 
 RSpec.describe "Template engines / slim" do
   let(:base_view) {
-    Class.new(Hanami::View) do
+    Class.new(Hanami2::View) do
       config.paths = FIXTURES_PATH.join("integration/template_engines/slim")
     end
   }
@@ -27,7 +27,7 @@ RSpec.describe "Template engines / slim" do
   end
 
   it "supports context methods that yield" do
-    context = Class.new(Hanami::View::Context) do
+    context = Class.new(Hanami2::View::Context) do
       def wrapper
         "<wrapper>#{yield}</wrapper>".html_safe
       end
@@ -54,7 +54,7 @@ RSpec.describe "Template engines / slim" do
         div goes here.
     SLIM
 
-    output = Hanami::View::Tilt::SlimAdapter::Template.new { src }.render(scope)
+    output = Hanami2::View::Tilt::SlimAdapter::Template.new { src }.render(scope)
 
     expect(output.strip).to eq "true"
   end
@@ -76,7 +76,7 @@ RSpec.describe "Template engines / slim" do
           div Nested content here.
     SLIM
 
-    output = Hanami::View::Tilt::SlimAdapter::Template.new { src }.render(scope)
+    output = Hanami2::View::Tilt::SlimAdapter::Template.new { src }.render(scope)
 
     expect(output.strip).to eq "true: <div>Some content here.</div>true: <div>Nested content here.</div>"
   end

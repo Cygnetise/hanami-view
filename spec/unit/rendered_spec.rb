@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-RSpec.describe Hanami::View::Rendered do
+RSpec.describe Hanami2::View::Rendered do
   subject(:rendered) {
     described_class.new(
       output: "rendered template output",

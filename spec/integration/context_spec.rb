@@ -9,7 +9,7 @@ RSpec.describe "Context" do
         end
       end
 
-      class Context < Hanami::View::Context
+      class Context < Hanami2::View::Context
         attr_reader :assets
         decorate :assets
 
@@ -20,7 +20,7 @@ RSpec.describe "Context" do
       end
 
       module Parts
-        class Assets < Hanami::View::Part
+        class Assets < Hanami2::View::Part
           def image_tag(path)
             <<~HTML
               <img src="#{value[path]}">
@@ -28,7 +28,7 @@ RSpec.describe "Context" do
           end
         end
 
-        class User < Hanami::View::Part
+        class User < Hanami2::View::Part
           def image_tag
             value[:image_url] || context.assets.image_tag("default.png")
           end
@@ -36,7 +36,7 @@ RSpec.describe "Context" do
       end
     end
 
-    view = Class.new(Hanami::View) do
+    view = Class.new(Hanami2::View) do
       config.paths = FIXTURES_PATH.join("integration/context")
       config.template = "decorated_attributes"
       config.part_namespace = Test::Parts

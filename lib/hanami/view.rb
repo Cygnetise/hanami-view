@@ -8,7 +8,7 @@ require "zeitwerk"
 require_relative "view/errors"
 require_relative "view/html"
 
-module Hanami
+module Hanami2
   # A standalone, template-based view rendering system that offers everything you need to write
   # well-factored view code.
   #
@@ -26,14 +26,12 @@ module Hanami
     def self.gem_loader
       @gem_loader ||= Zeitwerk::Loader.new.tap do |loader|
         root = File.expand_path("..", __dir__)
-        loader.tag = "hanami-view"
-        loader.push_dir(root)
+        loader.tag = "hanami2-view"
+        loader.push_dir("#{root}/hanami", namespace: Hanami2)
         loader.ignore(
-          "#{root}/hanami-view.rb",
           "#{root}/hanami/view/version.rb",
           "#{root}/hanami/view/errors.rb",
         )
-        loader.inflector = Zeitwerk::GemInflector.new("#{root}/hanami-view.rb")
         loader.inflector.inflect(
           "erb" => "ERB",
           "html" => "HTML",
@@ -131,7 +129,7 @@ module Hanami
     #
     #   @see https://dry-rb.org/gems/dry-view/scopes/
     #
-    #   @param scope_class [Class] scope class (inheriting from `Hanami::View::Scope`)
+    #   @param scope_class [Class] scope class (inheriting from `Hanami2::View::Scope`)
     #   @api public
     #   @since 2.1.0
     # @!scope class
@@ -141,11 +139,11 @@ module Hanami
     #   Set the default context object to use when rendering. This will be used
     #   unless another context object is applied at render-time to `View#call`
     #
-    #   Defaults to a frozen instance of `Hanami::View::Context`.
+    #   Defaults to a frozen instance of `Hanami2::View::Context`.
     #
     #   @see View#call
     #
-    #   @param context [Hanami::View::Context] context object
+    #   @param context [Hanami2::View::Context] context object
     #   @api public
     #   @since 2.1.0
     # @!scope class
@@ -440,19 +438,19 @@ module Hanami
     #   2. The scope has been inherited by the view superclass
     #
     # If the view doesn't have an already existing scope, the newly scope
-    # will inherit from `Hanami::View::Scope` by default.
+    # will inherit from `Hanami2::View::Scope` by default.
     #
     # However, you can specify any base class for it. This is not
     # recommended, unless you know what you're doing.
     #
-    # @param scope [Hanami::View::Scope] the current scope (if any), or the
-    #   default base class will be `Hanami::View::Scope`
+    # @param scope [Hanami2::View::Scope] the current scope (if any), or the
+    #   default base class will be `Hanami2::View::Scope`
     # @param block [Proc] the scope logic definition
     #
     # @api public
     #
     # @example Basic usage
-    #   class MyView < Hanami::View
+    #   class MyView < Hanami2::View
     #     config.scope = MyScope
     #
     #     scope do
@@ -473,7 +471,7 @@ module Hanami
     #   MyView.new.(message: "Hello") # => "HELLO!"
     #
     # @example Inherited scope
-    #   class MyScope < Hanami::View::Scope
+    #   class MyScope < Hanami2::View::Scope
     #     private
     #
     #     def shout(string)
@@ -481,7 +479,7 @@ module Hanami
     #     end
     #   end
     #
-    #   class MyView < Hanami::View
+    #   class MyView < Hanami2::View
     #     config.scope = MyScope
     #
     #     scope do

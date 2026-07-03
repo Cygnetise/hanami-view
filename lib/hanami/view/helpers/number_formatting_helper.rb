@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-module Hanami
+module Hanami2
   class View
     module Helpers
       # Helper methods for formatting numbers as text.
@@ -12,15 +12,15 @@ module Hanami
       # classes, or in specific classes as required.
       #
       # @example Standalone usage
-      #   class BasePart < Hanami::View::Part
-      #     include Hanami::View::Helpers::NumberFormattingHelper
+      #   class BasePart < Hanami2::View::Part
+      #     include Hanami2::View::Helpers::NumberFormattingHelper
       #   end
       #
-      #   class BaseScope < Hanami::View::Scope
-      #     include Hanami::View::Helpers::NumberFormattingHelper
+      #   class BaseScope < Hanami2::View::Scope
+      #     include Hanami2::View::Helpers::NumberFormattingHelper
       #   end
       #
-      #   class BaseView < Hanami::View
+      #   class BaseView < Hanami2::View
       #     config.part_class = BasePart
       #     config.scope_class = BaseScope
       #   end

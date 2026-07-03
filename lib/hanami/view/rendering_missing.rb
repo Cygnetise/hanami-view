@@ -3,7 +3,7 @@
 require "dry/inflector"
 require_relative "errors"
 
-module Hanami
+module Hanami2
   class View
     # @api private
     # @since 2.1.0

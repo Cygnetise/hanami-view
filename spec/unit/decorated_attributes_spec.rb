@@ -1,9 +1,9 @@
 # frozen_string_literal: true
 
-RSpec.describe Hanami::View::DecoratedAttributes do
+RSpec.describe Hanami2::View::DecoratedAttributes do
   subject(:decoratable) {
     Test::Decoratable = Struct.new(:attr_1, :attr_2, :_rendering) do
-      include Hanami::View::DecoratedAttributes
+      include Hanami2::View::DecoratedAttributes
 
       decorate :attr_1, as: :my_value
       decorate :attr_2
@@ -15,7 +15,7 @@ RSpec.describe Hanami::View::DecoratedAttributes do
 
   let(:attr_1) { double(:attr_1) }
   let(:attr_2) { double(:attr_2) }
-  let(:rendering) { instance_spy(Hanami::View::Rendering) }
+  let(:rendering) { instance_spy(Hanami2::View::Rendering) }
 
   context "with rendering" do
     it "returns decorated attributes as parts" do
@@ -49,6 +49,6 @@ RSpec.describe Hanami::View::DecoratedAttributes do
 
   it "prepends a single module to provide the decorated attribute readers" do
     expect(decoratable.class.ancestors.map(&:name).grep(/Test::Decoratable::DecoratedAttributes/).length).to eq 1
-    expect(decoratable.class.ancestors[0].inspect).to eq "#<Hanami::View::DecoratedAttributes::Attributes[:attr_1, :attr_2, :invalid_attr]>"
+    expect(decoratable.class.ancestors[0].inspect).to eq "#<Hanami2::View::DecoratedAttributes::Attributes[:attr_1, :attr_2, :invalid_attr]>"
   end
 end

@@ -2,15 +2,15 @@
 
 require "temple"
 
-module Hanami
+module Hanami2
   class View
     module ERB
-      # Hanami::View ERB engine.
+      # Hanami2::View ERB engine.
       #
       # @api private
       # @since 2.1.0
       class Engine < Temple::Engine
-        define_options capture_generator: Hanami::View::HTMLSafeStringBuffer
+        define_options capture_generator: Hanami2::View::HTMLSafeStringBuffer
 
         use Parser
         use Filters::Block

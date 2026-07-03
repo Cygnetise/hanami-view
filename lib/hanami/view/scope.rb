@@ -3,7 +3,7 @@
 require "dry/core/equalizer"
 require "dry/core/constants"
 
-module Hanami
+module Hanami2
   class View
     # Evaluation context for templates (including layouts and partials) and
     # provides a place to encapsulate view-specific behaviour alongside a

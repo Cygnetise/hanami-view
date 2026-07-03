@@ -2,7 +2,7 @@
 
 require "dry/core/cache"
 
-module Hanami
+module Hanami2
   class View
     # Shared cache for views.
     #

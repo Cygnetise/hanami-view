@@ -2,14 +2,14 @@
 
 RSpec.describe "Scopes" do
   let(:base_view) {
-    Class.new(Hanami::View) do
+    Class.new(Hanami2::View) do
       config.paths = FIXTURES_PATH.join("integration/scopes")
     end
   }
 
   describe "Custom scope for a view" do
     it "renders the template using the scope" do
-      custom_scope = Class.new(Hanami::View::Scope) do
+      custom_scope = Class.new(Hanami2::View::Scope) do
         def hello
           "Hello #{locals[:text]}!"
         end
@@ -47,7 +47,7 @@ RSpec.describe "Scopes" do
 
     context "scope_class configured" do
       it "creates a scope subclass inheriting from the scope_class and renders the template using the scope subclass" do
-        scope_class = Class.new(Hanami::View::Scope) {
+        scope_class = Class.new(Hanami2::View::Scope) {
           private
 
           def exclaim(str)
@@ -74,7 +74,7 @@ RSpec.describe "Scopes" do
 
     context "scope configured" do
       it "creates a scope subclass inheriting from the configured scope and renders the template using the scope subclass" do
-        scope_class = Class.new(Hanami::View::Scope) {
+        scope_class = Class.new(Hanami2::View::Scope) {
           private
 
           def exclaim(str)
@@ -101,7 +101,7 @@ RSpec.describe "Scopes" do
 
     context "both scope_class and scope configured" do
       it "creates a scope subclass from the configured scope (ignoring scope_class) and renders the template using the scope subclass" do
-        base_scope_class = Class.new(Hanami::View::Scope) {
+        base_scope_class = Class.new(Hanami2::View::Scope) {
           private
 
           def exclaim(str)
@@ -109,7 +109,7 @@ RSpec.describe "Scopes" do
           end
         }
 
-        view_scope_class = Class.new(Hanami::View::Scope) {
+        view_scope_class = Class.new(Hanami2::View::Scope) {
           private
 
           def exclaim(str)
@@ -148,7 +148,7 @@ RSpec.describe "Scopes" do
 
   specify "Rendering a partial implicitly via a custom named scope" do
     module Test::Scopes
-      class Greeting < Hanami::View::Scope
+      class Greeting < Hanami2::View::Scope
         def greeting
           _locals[:greeting].upcase + "!"
         end
@@ -167,7 +167,7 @@ RSpec.describe "Scopes" do
 
   specify "Rendering a partial implicitly via a custom named scope (provided via a class)" do
     module Test::Scopes
-      class Greeting < Hanami::View::Scope
+      class Greeting < Hanami2::View::Scope
         def greeting
           _locals[:greeting].upcase + "!"
         end
@@ -194,7 +194,7 @@ RSpec.describe "Scopes" do
 
   specify "Rendering a partial explicitly via a custom named scope" do
     module Test::Scopes
-      class Greeting < Hanami::View::Scope
+      class Greeting < Hanami2::View::Scope
         def greeting
           _locals[:greeting].upcase + "!"
         end
@@ -213,7 +213,7 @@ RSpec.describe "Scopes" do
 
   specify "Custom named scope providing defaults for missing locals" do
     module Test::Scopes
-      class Greeting < Hanami::View::Scope
+      class Greeting < Hanami2::View::Scope
         def greeting
           _locals.fetch(:greeting) { "Howdy" }
         end
@@ -232,7 +232,7 @@ RSpec.describe "Scopes" do
 
   specify "Creating a custom scope from a view part" do
     module Test::Parts
-      class Message < Hanami::View::Part
+      class Message < Hanami2::View::Part
         def greeting
           # FIXME: partial name should not be required here
           scope(:greeting, greeting: value[:text]).render("shared/greeting")
@@ -241,7 +241,7 @@ RSpec.describe "Scopes" do
     end
 
     module Test::Scopes
-      class Greeting < Hanami::View::Scope
+      class Greeting < Hanami2::View::Scope
         def greeting
           _locals[:greeting] + "!"
         end
@@ -306,7 +306,7 @@ RSpec.describe "Scopes" do
       end
 
       module Scopes
-        class ApplicationScope < Hanami::View::Scope
+        class ApplicationScope < Hanami2::View::Scope
           include Test::Helpers::StringFormattingHelpers
           include Test::Helpers::TimeFormattingHelpers
         end

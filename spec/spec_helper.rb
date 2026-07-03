@@ -34,7 +34,7 @@ RSpec.configure do |config|
   end
 
   config.after do
-    Hanami::View.cache.clear
+    Hanami2::View.cache.clear
   end
 end
 

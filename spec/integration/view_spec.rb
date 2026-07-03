@@ -2,7 +2,7 @@
 
 RSpec.describe "hanami-view" do
   let(:view_class) do
-    Class.new(Hanami::View) do
+    Class.new(Hanami2::View) do
       config.paths = SPEC_ROOT.join("fixtures/templates")
       config.layout = "app"
       config.template = "users"
@@ -18,7 +18,7 @@ RSpec.describe "hanami-view" do
   end
 
   let(:context) {
-    Class.new(Hanami::View::Context) do
+    Class.new(Hanami2::View::Context) do
       def title
         "hanami-view rocks!"
       end
@@ -87,7 +87,7 @@ RSpec.describe "hanami-view" do
 
   describe "inheritance" do
     let(:parent_view) do
-      klass = Class.new(Hanami::View)
+      klass = Class.new(Hanami2::View)
 
       klass.setting :paths, SPEC_ROOT.join("fixtures/templates")
       klass.setting :layout, "app"

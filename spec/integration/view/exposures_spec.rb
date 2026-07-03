@@ -2,7 +2,7 @@
 
 RSpec.describe "View / exposures" do
   specify "exposures have access to context" do
-    view = Class.new(Hanami::View) do
+    view = Class.new(Hanami2::View) do
       config.paths = SPEC_ROOT.join("fixtures/templates")
       config.template = "greeting"
 
@@ -11,7 +11,7 @@ RSpec.describe "View / exposures" do
       end
     end.new
 
-    context = Class.new(Hanami::View::Context) do
+    context = Class.new(Hanami2::View::Context) do
       def name
         "Jane"
       end

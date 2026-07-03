@@ -4,7 +4,7 @@
 #
 # Copyright (c) 2010-2023 Magnus Holm.
 
-module Hanami
+module Hanami2
   class View
     module ERB
       module Filters
